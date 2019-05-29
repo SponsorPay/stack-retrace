@@ -11,7 +11,7 @@ app.post("/", async function(request: Request, response: Response) {
 
   console.log(`Received stack: ${stack}`)
 
-  const retracedStack = await retraceStack(stack)
+  const retracedStack = await retraceStack(stack, {})
 
   response.send(retracedStack)
 })

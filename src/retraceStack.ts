@@ -1,19 +1,31 @@
-import { RawSourceMap, SourceMapConsumer } from "source-map"
+import { SourceMapConsumer } from "source-map"
 import { Stack } from "./Stack"
+import { StackFrame } from "error-stack-parser"
+import { SourceMapProvider } from "./sourceMapProvider"
+import { httpProvider } from "./sourceMapProvider/httpProvider"
 
-export async function retraceStack(stack: Stack, sourceMap: RawSourceMap): Promise<string> {
-  return await SourceMapConsumer.with(
-    sourceMap,
-    null,
-    (consumer: any): Promise<string> => {
-      const firstFrame = stack[0]
+export async function retraceStack(stack: Stack, sourceMapProvider: SourceMapProvider = httpProvider): Promise<any> {
+  return await stack.map(async frame => {
+    const sourceMap = await sourceMapProvider(frame.fileName!)
 
-      const retracedFrame = consumer.originalPositionFor({
-        line: firstFrame.lineNumber,
-        column: firstFrame.columnNumber
+    return await SourceMapConsumer.with(sourceMap, frame.fileName + ".map", consumer => {
+      const position = consumer.originalPositionFor({
+        line: frame.lineNumber!,
+        column: frame.columnNumber!
       })
 
-      return Promise.resolve(retracedFrame.source)
-    }
-  )
+      const retracedFrame = {
+        ...frame,
+        lineNumber: position.line,
+        columnNumber: position.column,
+        fileName: position.source
+      }
+
+      retracedFrame.toString = function() {
+        return `${this.functionName} (${this.fileName!}:${this.lineNumber}:${this.columnNumber})`
+      }
+
+      return Promise.resolve(retracedFrame as StackFrame)
+    })
+  })
 }

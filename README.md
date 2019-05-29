@@ -19,7 +19,7 @@ const stack = parseStack(
 
 retraceStack(stack).join("\n") // Results in:
 
-"new StatusCodeError (new StatusCodeError (webpack:///state-actions/src/client/statusCodeError.ts:18:4)\n" +
+"new StatusCodeError (webpack:///state-actions/src/client/statusCodeError.ts:18:4)\n" +
 "CollinsFetch.<anonymous> (webpack:///state-actions/src/client/collinsFetch.ts:63:12)\n" +
 "step (webpack:///Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:97:0)\n" +
 "Object.next (webpack:///Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:78:44)\n" +

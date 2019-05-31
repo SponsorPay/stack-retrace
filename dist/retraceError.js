@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -34,35 +45,21 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var node_fetch_1 = __importDefault(require("node-fetch"));
-function httpProvider(filename) {
+var parseStack_1 = require("./parseStack");
+var retraceStack_1 = require("./retraceStack");
+function retraceError(error) {
     return __awaiter(this, void 0, void 0, function () {
+        var retracedStack;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, node_fetch_1.default(filename + ".map")
-                        .then(function (res) { return res.json(); })
-                        .catch(function () { return null; })];
-                case 1: return [2 /*return*/, _a.sent()];
+                case 0: return [4 /*yield*/, retraceStack_1.retraceStack(parseStack_1.parseStack(error.stack))];
+                case 1:
+                    retracedStack = _a.sent();
+                    return [2 /*return*/, __assign({}, error, { stack: retracedStack.join("\n") })];
             }
         });
     });
 }
-exports.httpProvider = httpProvider;
-// const EmptySourceMap = {
-//   version: 3,
-//   sources: [],
-//   mappings: "",
-//   file: "",
-// }
-// version: number;
-// sources: string[];
-// names: string[];
-// sourceRoot?: string;
-// sourcesContent?: string[];
-// mappings: string;
-// file: string;
-//# sourceMappingURL=httpProvider.js.map
+exports.retraceError = retraceError;
+//# sourceMappingURL=retraceError.js.map

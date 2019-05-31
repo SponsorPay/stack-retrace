@@ -1,2 +1,2 @@
 import { RawSourceMap } from "source-map";
-export declare type SourceMapProvider = (filename: string) => RawSourceMap | Promise<RawSourceMap>;
+export declare type SourceMapProvider = (filename: string) => RawSourceMap | Promise<RawSourceMap> | undefined;

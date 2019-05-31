@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "ts-node server.ts",
+    "dev": "ts-node examples/server.ts",
     "test": "jest",
     "build": "tsc",
     "lint": "tslint --project tsconfig.json",
@@ -24,7 +24,8 @@
     "ts-node": "^8.0.3",
     "tslint": "^5.14.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.3.4000"
+    "typescript": "^3.3.4000",
+    "winston": "^3.2.1"
   },
   "dependencies": {
     "@types/node-fetch": "^2.3.4",

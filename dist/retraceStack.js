@@ -53,31 +53,35 @@ function retraceStack(stack, sourceMapProvider) {
     return __awaiter(this, void 0, void 0, function () {
         var _this = this;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, stack.map(function (frame) { return __awaiter(_this, void 0, void 0, function () {
-                        var sourceMap;
-                        return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, sourceMapProvider(frame.fileName)];
-                                case 1:
-                                    sourceMap = _a.sent();
-                                    return [4 /*yield*/, source_map_1.SourceMapConsumer.with(sourceMap, frame.fileName + ".map", function (consumer) {
-                                            var position = consumer.originalPositionFor({
-                                                line: frame.lineNumber,
-                                                column: frame.columnNumber
-                                            });
-                                            var retracedFrame = __assign({}, frame, { lineNumber: position.line, columnNumber: position.column, fileName: position.source });
-                                            retracedFrame.toString = function () {
-                                                return this.functionName + " (" + this.fileName + ":" + this.lineNumber + ":" + this.columnNumber + ")";
-                                            };
-                                            return Promise.resolve(retracedFrame);
-                                        })];
-                                case 2: return [2 /*return*/, _a.sent()];
-                            }
-                        });
-                    }); })];
-                case 1: return [2 /*return*/, _a.sent()];
-            }
+            return [2 /*return*/, Promise.all(stack.map(function (frame) { return __awaiter(_this, void 0, void 0, function () {
+                    var sourceMap;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                if (!frame.fileName) {
+                                    return [2 /*return*/, frame];
+                                }
+                                return [4 /*yield*/, sourceMapProvider(frame.fileName)];
+                            case 1:
+                                sourceMap = _a.sent();
+                                if (!sourceMap) {
+                                    return [2 /*return*/, frame];
+                                }
+                                return [4 /*yield*/, source_map_1.SourceMapConsumer.with(sourceMap, frame.fileName + ".map", function (consumer) {
+                                        var position = consumer.originalPositionFor({
+                                            line: frame.lineNumber,
+                                            column: frame.columnNumber
+                                        });
+                                        var retracedFrame = __assign({}, frame, { lineNumber: position.line, columnNumber: position.column, fileName: position.source });
+                                        retracedFrame.toString = function () {
+                                            return this.functionName + " (" + this.fileName + ":" + this.lineNumber + ":" + this.columnNumber + ")";
+                                        };
+                                        return retracedFrame;
+                                    })];
+                            case 2: return [2 /*return*/, _a.sent()];
+                        }
+                    });
+                }); }))];
         });
     });
 }

@@ -1,3 +1,3 @@
 import { RawSourceMap } from "source-map"
 
-export type SourceMapProvider = (filename: string) => RawSourceMap | Promise<RawSourceMap>
+export type SourceMapProvider = (filename: string) => RawSourceMap | Promise<RawSourceMap> | undefined

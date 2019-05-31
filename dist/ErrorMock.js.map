@@ -1,1 +1,1 @@
-{"version":3,"file":"ErrorMock.js","sourceRoot":"","sources":["../src/ErrorMock.ts"],"names":[],"mappings":";;AAAA;IAME,mBAAY,KAAa;QALzB,SAAI,GAAG,WAAW,CAAA;QAClB,YAAO,GAAG,yBAAyB,CAAA;QAKjC,IAAI,CAAC,KAAK,GAAG,KAAK,CAAA;IACpB,CAAC;IACH,gBAAC;AAAD,CAAC,AATD,IASC;AATY,8BAAS"}
+{"version":3,"file":"ErrorMock.js","sourceRoot":"","sources":["../src/ErrorMock.ts"],"names":[],"mappings":";;AAAA;IAME,mBAAY,KAAa;QALzB,SAAI,GAAG,EAAE,CAAA;QACT,YAAO,GAAG,EAAE,CAAA;QAKV,IAAI,CAAC,KAAK,GAAG,KAAK,CAAA;IACpB,CAAC;IACH,gBAAC;AAAD,CAAC,AATD,IASC;AATY,8BAAS"}

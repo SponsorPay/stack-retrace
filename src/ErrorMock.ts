@@ -1,6 +1,6 @@
 export class ErrorMock implements Error {
-  name = "ErrorMock"
-  message = "Mock of an Error object"
+  name = ""
+  message = ""
 
   stack: string
 

@@ -18,19 +18,19 @@ const sourceMapProvider = fsProvider({
 test("returns retraced path of first stack frame", async function() {
   const retracedStack = await retraceStack(stack, sourceMapProvider)
 
-  expect((await retracedStack[0]).toString()).toEqual(
+  expect(retracedStack[0].toString()).toEqual(
     "new StatusCodeError (webpack:///state-actions/src/client/statusCodeError.ts:18:4)"
   )
-  expect((await retracedStack[1]).toString()).toEqual(
+  expect(retracedStack[1].toString()).toEqual(
     "CollinsFetch.<anonymous> (webpack:///state-actions/src/client/collinsFetch.ts:63:12)"
   )
-  expect((await retracedStack[2]).toString()).toEqual(
+  expect(retracedStack[2].toString()).toEqual(
     "step (webpack:///Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:97:0)"
   )
-  expect((await retracedStack[3]).toString()).toEqual(
+  expect(retracedStack[3].toString()).toEqual(
     "Object.next (webpack:///Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:78:44)"
   )
-  expect((await retracedStack[4]).toString()).toEqual(
+  expect(retracedStack[4].toString()).toEqual(
     "fulfilled (webpack:///Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:68:41)"
   )
 })

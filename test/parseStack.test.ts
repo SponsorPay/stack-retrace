@@ -1,13 +1,13 @@
 import { parseStack } from "../src"
 
-const rawStack =
-  "StatusCodeError: No such placement\n" +
-  "    at new StatusCodeError (http://localhost:8080/nfp.js:7394:28)\n" +
-  "    at CollinsFetch.<anonymous> (http://localhost:8080/nfp.js:7305:35)\n" +
-  "    at step (http://localhost:8080/vendors~nfp.js:91818:23)"
+test("parses Chrome stack", async function() {
+  const chromeStack =
+    "StatusCodeError: No such placement\n" +
+    "    at new StatusCodeError (http://localhost:8080/nfp.js:7394:28)\n" +
+    "    at CollinsFetch.<anonymous> (http://localhost:8080/nfp.js:7305:35)\n" +
+    "    at step (http://localhost:8080/vendors~nfp.js:91818:23)"
 
-test("returns parsed stack frames", async function() {
-  const stackFrames = parseStack(rawStack)
+  const stackFrames = parseStack(chromeStack)
 
   expect(stackFrames[0]).toMatchObject({
     fileName: "http://localhost:8080/nfp.js",
@@ -26,5 +26,24 @@ test("returns parsed stack frames", async function() {
     lineNumber: 91818,
     columnNumber: 23,
     functionName: "step"
+  })
+})
+
+test("parses Console stack", async function() {
+  const consoleStack = "VM360:1 Uncaught Error: 123\n" + "    at foo (<anonymous>:1:24)\n" + "    at <anonymous>:1:1"
+
+  const stackFrames = parseStack(consoleStack)
+
+  expect(stackFrames[0]).toMatchObject({
+    fileName: "",
+    lineNumber: 1,
+    columnNumber: 24,
+    functionName: "foo"
+  })
+  expect(stackFrames[1]).toMatchObject({
+    fileName: "",
+    lineNumber: 1,
+    columnNumber: 1,
+    functionName: "<anonymous>"
   })
 })

@@ -1,10 +1,13 @@
-import * as fs from "fs"
+import { promises as fs } from "fs"
 import { RawSourceMap } from "source-map"
 
-export function fsProvider(pathMapping: Record<string, string>) {
-  return function provide(filename: string): RawSourceMap {
-    const path = pathMapping[filename]
+export function fsProvider(sourceMapDir: string) {
+  return async function provide(fileUrl: string): Promise<RawSourceMap> {
+    const filePath = new URL(fileUrl).pathname
+    const sourceMapPath = sourceMapDir + filePath + ".map"
 
-    return JSON.parse(fs.readFileSync(path).toString())
+    const jsonBuffer = await fs.readFile(sourceMapPath)
+
+    return JSON.parse(jsonBuffer.toString())
   }
 }

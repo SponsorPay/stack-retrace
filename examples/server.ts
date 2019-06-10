@@ -1,16 +1,22 @@
 import express, { Request, Response } from "express"
+import cors from "cors"
 import bodyParser from "body-parser"
-import { retraceError } from "../src/retraceError"
+import { createErrorRetracer } from "../src"
 
 const app = express()
+const errorRetracer = createErrorRetracer()
 
+app.use(cors())
 app.use(bodyParser.json())
 
-app.post("/retrace-error", async function(request: Request, response: Response) {
-  const error = request.body as Error
-  const retracedError = await retraceError(error)
+app.post("/retrace-error", async (request: Request, response: Response) => {
+  try {
+    const retracedError = await errorRetracer.retrace(request.body)
 
-  response.send(retracedError)
+    response.send(retracedError)
+  } catch (e) {
+    response.send({ error: e })
+  }
 })
 
 app.listen(7000)

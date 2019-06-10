@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "",
   "main": "dist/index.js",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "dev": "ts-node examples/server.ts",
     "test": "jest",
@@ -14,23 +17,27 @@
   "license": "ISC",
   "devDependencies": {
     "@types/body-parser": "^1.17.0",
+    "@types/cors": "^2.8.5",
     "@types/express": "^4.16.1",
     "@types/jest": "^24.0.11",
     "@types/node": "^11.12.1",
     "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "jest": "^24.5.0",
+    "prettier": "^1.18.2",
     "ts-jest": "^24.0.0",
     "ts-node": "^8.0.3",
     "tslint": "^5.14.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.3.4000",
-    "winston": "^3.2.1"
+    "typescript": "^3.3.4000"
   },
   "dependencies": {
     "@types/node-fetch": "^2.3.4",
-    "error-stack-parser": "^2.0.2",
+    "condense": "0.0.1",
     "node-fetch": "^2.6.0",
-    "source-map": "^0.7.3"
+    "source-map": "^0.7.3",
+    "stacktrace-parser": "^0.1.6",
+    "tern": "^0.24.0"
   }
 }

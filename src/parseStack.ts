@@ -1,9 +1,11 @@
-import ErrorStackParser from "error-stack-parser"
-import { Stack, StackFrame } from "./Stack"
-import { ErrorMock } from "./ErrorMock"
+import * as stackParser from "stacktrace-parser"
+import { Stack, StackFrame } from "./stack"
 
 export function parseStack(rawStack: string): Stack {
-  const error = new ErrorMock(rawStack)
+  const rawFrames = stackParser.parse(rawStack)
 
-  return ErrorStackParser.parse(error).map(frame => new StackFrame(frame as StackFrame))
+  return rawFrames.map(
+    ({ file, column, lineNumber, methodName }) =>
+      new StackFrame({ fileName: file, functionName: methodName, columnNumber: column, lineNumber })
+  )
 }

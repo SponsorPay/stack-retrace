@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var StackFrame = /** @class */ (function () {
     function StackFrame(params) {
-        var _a = params.fileName, fileName = _a === void 0 ? "" : _a, lineNumber = params.lineNumber, _b = params.columnNumber, columnNumber = _b === void 0 ? 1 : _b, _c = params.functionName, functionName = _c === void 0 ? "<anonymous>" : _c;
+        var fileName = params.fileName, lineNumber = params.lineNumber, columnNumber = params.columnNumber, functionName = params.functionName;
         this.fileName = fileName;
         this.lineNumber = lineNumber;
         this.columnNumber = columnNumber;

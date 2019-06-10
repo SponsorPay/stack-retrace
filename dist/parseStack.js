@@ -1,14 +1,20 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var error_stack_parser_1 = __importDefault(require("error-stack-parser"));
+var stackParser = __importStar(require("stacktrace-parser"));
 var Stack_1 = require("./Stack");
-var ErrorMock_1 = require("./ErrorMock");
 function parseStack(rawStack) {
-    var error = new ErrorMock_1.ErrorMock(rawStack);
-    return error_stack_parser_1.default.parse(error).map(function (frame) { return new Stack_1.StackFrame(frame); });
+    var rawFrames = stackParser.parse(rawStack);
+    return rawFrames.map(function (_a) {
+        var file = _a.file, column = _a.column, lineNumber = _a.lineNumber, methodName = _a.methodName;
+        return new Stack_1.StackFrame({ fileName: file, functionName: methodName, columnNumber: column, lineNumber: lineNumber });
+    });
 }
 exports.parseStack = parseStack;
 //# sourceMappingURL=parseStack.js.map

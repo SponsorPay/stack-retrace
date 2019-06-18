@@ -1,13 +1,13 @@
 export interface StackFrame {
-  fileName: string
-  lineNumber: number
-  columnNumber: number
-  functionName: string
+  fileName: string | null
+  lineNumber: number | null
+  columnNumber: number | null
+  functionName: string | null
 }
 
 export class StackFrame {
-  constructor(params: Partial<StackFrame> & { lineNumber: number }) {
-    const { fileName = "", lineNumber, columnNumber = 1, functionName = "<anonymous>" } = params
+  constructor(params: StackFrame) {
+    const { fileName, lineNumber, columnNumber, functionName } = params
 
     this.fileName = fileName
     this.lineNumber = lineNumber
@@ -15,7 +15,7 @@ export class StackFrame {
     this.functionName = functionName
   }
 
-  toString() {
+  public toString() {
     return `${this.functionName} (${this.fileName!}:${this.lineNumber}:${this.columnNumber})`
   }
 }

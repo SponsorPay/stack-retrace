@@ -1,13 +1,11 @@
 export interface StackFrame {
-    fileName: string;
-    lineNumber: number;
-    columnNumber: number;
-    functionName: string;
+    fileName: string | null;
+    lineNumber: number | null;
+    columnNumber: number | null;
+    functionName: string | null;
 }
 export declare class StackFrame {
-    constructor(params: Partial<StackFrame> & {
-        lineNumber: number;
-    });
+    constructor(params: StackFrame);
     toString(): string;
 }
 export declare type Stack = StackFrame[];

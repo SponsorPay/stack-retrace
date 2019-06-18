@@ -1,4 +1,13 @@
-import { ErrorMock } from "../src/ErrorMock"
+class ErrorWithStack implements Error {
+  name = "ErrorWithStack"
+  message = "Error with stack example"
+
+  stack: string
+
+  constructor(stack: string) {
+    this.stack = stack
+  }
+}
 
 const stack =
   "StatusCodeError: No such placement\n" +
@@ -8,4 +17,4 @@ const stack =
   "    at Object.next (http://localhost:8080/vendors~nfp.js:83690:53)\n" +
   "    at fulfilled (http://localhost:8080/vendors~nfp.js:83680:58)"
 
-export const error = new ErrorMock(stack)
+export const error = new ErrorWithStack(stack)

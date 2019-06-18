@@ -5,9 +5,11 @@
 ### Usage
 
 ```js
-import {parseStack, retraceStack}
+import { StackRetracer } from "stack-retrace"
 
-const stack = parseStack(
+const stackRetracer = new StackRetracer()
+
+await stackRetracer.retrace(
   "StatusCodeError: No such placement\n" +
     "    at new StatusCodeError (http://localhost:8080/nfp.js:8961:28)\n" +
     "    at CollinsFetch.<anonymous> (http://localhost:8080/nfp.js:8867:35)\n" +
@@ -16,12 +18,18 @@ const stack = parseStack(
     "    at fulfilled (http://localhost:8080/vendors~nfp.js:83680:58)"
 )
 
-
-retraceStack(stack).join("\n") // Results in:
-
 "new StatusCodeError (webpack:///state-actions/src/client/statusCodeError.ts:18:4)\n" +
-"CollinsFetch.<anonymous> (webpack:///state-actions/src/client/collinsFetch.ts:63:12)\n" +
-"step (webpack:///Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:97:0)\n" +
-"Object.next (webpack:///Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:78:44)\n" +
-"fulfilled (webpack:///Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:68:41)"
+  "CollinsFetch.<anonymous> (webpack:///state-actions/src/client/collinsFetch.ts:63:12)\n" +
+  "step (webpack:///Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:97:0)\n" +
+  "Object.next (webpack:///Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:78:44)\n" +
+  "fulfilled (webpack:///Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:68:41)"
+```
+
+### Options
+
+```js
+const stackRetracer = new StackRetracer({
+  stackParser: (rawStack: string) => Stack,
+  sourceMapProvider: (fileUrl: string) => Promise<SourceMap>
+})
 ```

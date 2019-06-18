@@ -1,1 +1,0 @@
-{"version":3,"file":"fsProvider.js","sourceRoot":"","sources":["../../src/sourceMapProvider/fsProvider.ts"],"names":[],"mappings":";;;;;;;;;AAAA,qCAAwB;AAGxB,SAAgB,UAAU,CAAC,WAAmC;IAC5D,OAAO,SAAS,OAAO,CAAC,QAAgB;QACtC,IAAM,IAAI,GAAG,WAAW,CAAC,QAAQ,CAAC,CAAA;QAElC,OAAO,IAAI,CAAC,KAAK,CAAC,EAAE,CAAC,YAAY,CAAC,IAAI,CAAC,CAAC,QAAQ,EAAE,CAAC,CAAA;IACrD,CAAC,CAAA;AACH,CAAC;AAND,gCAMC"}

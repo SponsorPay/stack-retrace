@@ -39,10 +39,8 @@
   },
   "dependencies": {
     "@types/node-fetch": "^2.3.4",
-    "condense": "0.0.1",
     "node-fetch": "^2.6.0",
     "source-map": "^0.7.3",
-    "stacktrace-parser": "^0.1.6",
-    "tern": "^0.24.0"
+    "stacktrace-parser": "^0.1.6"
   }
 }

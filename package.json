@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "",
   "author": "Maciej Komorowski <mckomo+npm@gmail.com>",
+  "repository": "https://github.com/SponsorPay/stack-retrace",
   "license": "ISC",
   "main": "dist/index.js",
   "files": [

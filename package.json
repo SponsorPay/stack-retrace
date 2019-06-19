@@ -5,14 +5,14 @@
   "author": "Maciej Komorowski <mckomo+npm@gmail.com>",
   "repository": "https://github.com/SponsorPay/stack-retrace",
   "license": "ISC",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "files": [
-    "dist/**/*"
+    "lib"
   ],
   "scripts": {
     "dev": "ts-node examples/server.ts",
     "test": "jest",
-    "clean": "rm -rf dist",
+    "clean": "rm -rf lib",
     "compile": "tsc",
     "build": "npm run clean && npm run compile",
     "lint": "tslint --project tsconfig.json",

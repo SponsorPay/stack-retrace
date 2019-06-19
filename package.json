@@ -21,7 +21,8 @@
     "publish": "npm run build && npm publish",
     "coverage": "jest --collect-coverage",
     "codecov": "codecov",
-    "fix": "npm run lint -- --fix"
+    "fix": "npm run lint -- --fix",
+    "cd": "standard-version -m \"chore(release): %s [skip ci]\" && git push --follow-tags origin master && npm publish"
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.0",

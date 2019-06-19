@@ -20,7 +20,7 @@
     "bump": "standard-version",
     "publish": "npm run build && npm publish",
     "coverage": "jest --collect-coverage",
-    "codecov": "nyc report --reporter=json --reporter=html && codecov -f coverage/*.json",
+    "codecov": "codecov",
     "fix": "npm run lint -- --fix"
   },
   "devDependencies": {
@@ -30,10 +30,10 @@
     "@types/jest": "^24.0.15",
     "@types/node": "^11.13.14",
     "body-parser": "^1.19.0",
+    "codecov": "^3.5.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "jest": "^24.8.0",
-    "nyc": "^14.1.1",
     "prettier": "^1.18.2",
     "standard-version": "^6.0.1",
     "ts-jest": "^24.0.2",

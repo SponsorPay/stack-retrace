@@ -37,15 +37,15 @@ export class StackRetracer {
   public async retraceFrame(frame: StackFrame, sourceMap: RawSourceMap): Promise<StackFrame> {
     return SourceMapConsumer.with(sourceMap, null, consumer => {
       const position = consumer.originalPositionFor({
-        line: frame.lineNumber!,
-        column: frame.columnNumber!
+        column: frame.columnNumber!,
+        line: frame.lineNumber!
       })
 
       const retracedFrame = new StackFrame({
         ...frame,
-        lineNumber: position.line,
         columnNumber: position.column,
-        fileName: position.source
+        fileName: position.source,
+        lineNumber: position.line
       })
 
       if (position.name) {

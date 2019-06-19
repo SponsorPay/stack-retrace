@@ -9,7 +9,7 @@ const errorRetracer = createErrorRetracer()
 app.use(cors())
 app.use(bodyParser.json())
 
-app.post("/retrace-error", async (request: Request, response: Response) => {
+app.post("/retrace-errorWithStack", async (request: Request, response: Response) => {
   try {
     const retracedError = await errorRetracer.retrace(request.body)
 

@@ -1,4 +1,4 @@
-class ErrorWithStack implements Error {
+export class ErrorWithStack implements Error {
   name = "ErrorWithStack"
   message = "Error with stack example"
 

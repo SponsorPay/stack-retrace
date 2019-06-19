@@ -10,7 +10,11 @@ export class ErrorRetracer {
     this.stackRetracer = stackRetracer
   }
 
-  public async retrace(error: { stack: string }) {
+  public async retrace(error: Error) {
+    if (!error.stack) {
+      return error
+    }
+
     const retracedStack = await this.stackRetracer.retrace(error.stack)
 
     return { ...error, stack: retracedStack.join("\n") }

@@ -2,9 +2,9 @@ import { createErrorRetracer, fsProvider } from "../src"
 import { error } from "../support/errorWithStack"
 
 async function retrace() {
-  const retraceError = createErrorRetracer({ sourceMapProvider: fsProvider(__dirname + "/../support/sourceMaps") })
+  const errorRetracer = createErrorRetracer({ sourceMapProvider: fsProvider(__dirname + "/../support/sourceMaps") })
 
-  console.log(await retraceError.retrace(error))
+  console.log(await errorRetracer.retrace(error))
 }
 
 retrace()

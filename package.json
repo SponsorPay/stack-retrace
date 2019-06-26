@@ -6,6 +6,7 @@
   "repository": "https://github.com/SponsorPay/stack-retrace",
   "license": "ISC",
   "main": "cjs/index.js",
+  "types": "cjs/index.d.ts",
   "files": [
     "cjs"
   ],

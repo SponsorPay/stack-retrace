@@ -23,13 +23,17 @@ export class StackRetracer {
           return frame
         }
 
-        const sourceMap = await this.sourceMapProvider(frame.fileName)
+        try {
+          const sourceMap = await this.sourceMapProvider(frame.fileName)
 
-        if (!sourceMap) {
+          if (!sourceMap) {
+            return frame
+          }
+
+          return this.retraceFrame(frame, sourceMap)
+        } catch (e) {
           return frame
         }
-
-        return this.retraceFrame(frame, sourceMap)
       })
     )
   }

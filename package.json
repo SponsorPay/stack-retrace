@@ -45,7 +45,7 @@
   "dependencies": {
     "@types/node-fetch": "^2.3.4",
     "node-fetch": "^2.6.0",
-    "source-map": "^0.7.3",
+    "source-map": "^0.8.0-beta.0",
     "stacktrace-parser": "^0.1.6",
     "tslib": "^1.10.0"
   }

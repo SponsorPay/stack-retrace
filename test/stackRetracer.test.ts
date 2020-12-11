@@ -14,13 +14,13 @@ test("retraces Chrome stack trace", async () => {
     "CollinsFetch.<anonymous> (webpack:///state-actions/src/client/collinsFetch.ts:63:12)"
   )
   expect(retracedStack[2].toString()).toEqual(
-    "step (webpack:///Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:97:0)"
+    "step (webpack:////Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:97:0)"
   )
   expect(retracedStack[3].toString()).toEqual(
-    "Object.next (webpack:///Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:78:44)"
+    "Object.next (webpack:////Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:78:44)"
   )
   expect(retracedStack[4].toString()).toEqual(
-    "fulfilled (webpack:///Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:68:41)"
+    "fulfilled (webpack:////Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:68:41)"
   )
 })
 
@@ -34,13 +34,13 @@ test("retraces FireFox stack trace", async () => {
     "../state-actions/build/client/collinsFetch.js/CollinsFetch.prototype.fetch/</< (webpack:///state-actions/src/client/collinsFetch.ts:63:12)"
   )
   expect(retracedStack[2].toString()).toEqual(
-    "step (webpack:///Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:97:0)"
+    "step (webpack:////Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:97:0)"
   )
   expect(retracedStack[3].toString()).toEqual(
-    "verb/< (webpack:///Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:78:44)"
+    "verb/< (webpack:////Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:78:44)"
   )
   expect(retracedStack[4].toString()).toEqual(
-    "fulfilled (webpack:///Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:68:41)"
+    "fulfilled (webpack:////Users/mckomo/Projects/revenue-desk/node_modules/tslib/tslib.es6.js:68:41)"
   )
 })
 
@@ -52,12 +52,12 @@ test("retraces Webpack production bundle", async () => {
     "e.<anonymous> (webpack:///state-actions/src/client/collinsFetch.ts:63:12)"
   )
   expect(retracedStack[2].toString()).toEqual(
-    "call (webpack:///mnt/jenkins/workspace/Console_revenue-desk_master-TDJ4IO3A3KP5PGHEHJFCEMN352DR6RVOCCXRPZZMQN2NJV2JG6QA/node_modules/tslib/tslib.es6.js:97:0)"
+    "call (webpack:////mnt/jenkins/workspace/Console_revenue-desk_master-TDJ4IO3A3KP5PGHEHJFCEMN352DR6RVOCCXRPZZMQN2NJV2JG6QA/node_modules/tslib/tslib.es6.js:97:0)"
   )
   expect(retracedStack[3].toString()).toEqual(
-    "Object.next (webpack:///mnt/jenkins/workspace/Console_revenue-desk_master-TDJ4IO3A3KP5PGHEHJFCEMN352DR6RVOCCXRPZZMQN2NJV2JG6QA/node_modules/tslib/tslib.es6.js:78:44)"
+    "Object.next (webpack:////mnt/jenkins/workspace/Console_revenue-desk_master-TDJ4IO3A3KP5PGHEHJFCEMN352DR6RVOCCXRPZZMQN2NJV2JG6QA/node_modules/tslib/tslib.es6.js:78:44)"
   )
   expect(retracedStack[4].toString()).toEqual(
-    "next (webpack:///mnt/jenkins/workspace/Console_revenue-desk_master-TDJ4IO3A3KP5PGHEHJFCEMN352DR6RVOCCXRPZZMQN2NJV2JG6QA/node_modules/tslib/tslib.es6.js:68:41)"
+    "next (webpack:////mnt/jenkins/workspace/Console_revenue-desk_master-TDJ4IO3A3KP5PGHEHJFCEMN352DR6RVOCCXRPZZMQN2NJV2JG6QA/node_modules/tslib/tslib.es6.js:68:41)"
   )
 })
